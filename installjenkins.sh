@@ -4,9 +4,7 @@
 sudo apt update
 sudo apt install fontconfig openjdk-17-jre -y
 java -version
-openjdk version "17.0.13" 2024-10-15
-OpenJDK Runtime Environment (build 17.0.13+11-Debian-2)
-OpenJDK 64-Bit Server VM (build 17.0.13+11-Debian-2, mixed mode, sharing)
+
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 
@@ -21,3 +19,8 @@ sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
+
+ansible --version
+
+
+sudo systemctl status jenkins
