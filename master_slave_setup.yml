@@ -5,18 +5,18 @@
   tasks:
     - name: Ensure SSH key is copied to slave
       ansible.builtin.copy:
-        src: "/c/Devops/AWS KEY/PranayAWS.pem"
+        src: "/home/ubuntu/Concepts/PranayAWS.pem"
         dest: "/home/ubuntu/.ssh/id_rsa"
         mode: '0600'
 
     - name: Add the slave to known_hosts file on master
       ansible.builtin.shell:
-        cmd: ssh-keyscan -H slave1.example.com >> /home/ubuntu/.ssh/known_hosts
+        cmd: ssh-keyscan -H 13.203.103.154 >> /home/ubuntu/.ssh/known_hosts
         creates: /home/ubuntu/.ssh/known_hosts
 
     - name: Ensure that the slave is reachable from the master
       ansible.builtin.ping:
-        delegate_to: slave1.example.com
+        delegate_to: 13.203.103.154
 
 - name: Run a task on the slave
   hosts: slave
@@ -24,7 +24,7 @@
   tasks:
     - name: Ensure SSH key is present on the slave for master access
       ansible.builtin.copy:
-        src: "/c/Devops/AWS KEY/PranayAWS.pem"
+        src: "/home/ubuntu/Concepts/PranayAWS.pem"
         dest: "/home/ubuntu/.ssh/authorized_keys"
         mode: '0600'
 
