@@ -19,6 +19,12 @@ resource "aws_instance" "Jenkins-Master" {
 
   # Optional: Attach a public IP
   associate_public_ip_address = true
+    ingress {
+    from_port   = 9000
+    to_port     = 9000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   # Optional: Configure a block device (EBS volume)
   root_block_device {

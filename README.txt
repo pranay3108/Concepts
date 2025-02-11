@@ -1,11 +1,12 @@
-git clone your repo
+1. Run the Terraform main.tf file creating infrastructure
 
-chmod +x installjenkins.sh
+2.Connect to Terminal using SSH 
 
-./installjenkins.sh
+3.Git clone the repo
 
-sudo systemctl status jenkins
+4.Configure AWS CLI
 
-#on Slave 
-install Java
+5.Run commands
+a. "chmod +x Master Setup.sh"
+b. "./Master Setup.sh"
 
