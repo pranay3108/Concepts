@@ -25,11 +25,6 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update -y
 sudo apt-get install jenkins -y
 
-#Installing Docker on Master Machine
-sudo apt-get update  -y
-sudo apt-get install docker.io docker-compose-v2 -y
-sudo usermod -aG docker $USER && newgrp docker
-
 #Installing Trivy
 sudo apt-get install wget apt-transport-https gnupg lsb-release  -y
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
@@ -37,10 +32,6 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 sudo apt-get update -y
 sudo apt-get install trivy -y
 trivy -v
-
-#Installing SonarQube
-docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
-
 
 #Installing Kube CTL
 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.32.0/2024-12-20/bin/linux/amd64/kubectl
@@ -62,6 +53,18 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
+
+#Installing Docker on Master Machine
+sudo apt-get update  -y
+sudo apt-get install docker.io docker-compose-v2 -y
+sudo usermod -aG docker $USER && newgrp docker
+docker --version
+
+
+#Installing SonarQube
+docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
+
+
 
 #Creating Cluster
 #Checking Jenkins
