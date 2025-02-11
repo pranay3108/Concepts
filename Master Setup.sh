@@ -1,10 +1,6 @@
 #!/bin/bash
 #Please Configure aws first
 aws s3 ls
-#Installing Docker on Master Machine
-sudo apt-get update  -y
-sudo apt-get install docker.io docker-compose-v2 -y
-sudo usermod -aG docker $USER && newgrp docker
 
 #Installing Ansible on Master Machine
 sudo apt update  -y
@@ -28,6 +24,11 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 
 sudo apt-get update -y
 sudo apt-get install jenkins -y
+
+#Installing Docker on Master Machine
+sudo apt-get update  -y
+sudo apt-get install docker.io docker-compose-v2 -y
+sudo usermod -aG docker $USER && newgrp docker
 
 #Installing Trivy
 sudo apt-get install wget apt-transport-https gnupg lsb-release  -y
