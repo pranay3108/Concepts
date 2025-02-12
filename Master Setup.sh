@@ -33,11 +33,12 @@ sudo apt-get update -y
 sudo apt-get install trivy -y
 trivy -v
 
+
 #Installing Kube CTL
 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.32.0/2024-12-20/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
-kubectl version --short --client
+kubectl version --client
 
 #Installing EKS CTL
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
@@ -68,6 +69,7 @@ docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
 
 #Creating Cluster
 #Checking Jenkins
+
 sudo systemctl status jenkins
 
 
